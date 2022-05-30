@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>GAME OF TICTACTOE</title>
+<style>
+h1{
+  text-align: center; 
+}
+
+body {
+  background:orange;
+}
+
+input {
+height:150px;
+width:150px;
+background-color:#89cff0; 
+font-size:40px; 
+font-weight:bold;
+
+}
+
+form {
+text-align:center; 
+position:absolute; 
+top: 100px; 
+left:500px;
+}
+
+#button {
+  font-size: 15px;
+  background-color: pink;
+}
+
+
+
+</style>
+<script>
+
+var gameover = false
+var x = "X"
+
+function buttonclick(id) {
+
+if(document.getElementById(id).value == " " && gameover == false) { //no need to search once gameover 
+ document.getElementById(id).value = x;       //to put the x in the middle
+ document.getElementById(id).style.backgroundColor="red";
+
+ if(confirmation() == true) {
+   alert ("The winner is " +x)
+   gameover = true            //we got a winner and the game over
+ }
+
+ if(gameover == false && checkdraw() == true) {
+   alert("The game is a draw.")    
+   gameover = true   
+ }
+
+ if( x == "X") 
+	x = "0"
+ else x = "X"
+}
+
+}
+
+function confirmation() {
+
+  if(document.getElementById("btn1").value == x && document.getElementById("btn2").value == x && 
+  document.getElementById("btn3").value == x) {
+    return true
+  }
+  else if(document.getElementById("btn4").value == x && document.getElementById("btn5").value ==x && 
+  document.getElementById("btn6").value == x) {
+    return true
+  }
+  else if(document.getElementById("btn7").value == x && document.getElementById("btn8").value == x &&
+  document.getElementById("btn9").value == x) {
+    return true  //rows
+  }
+  else if(document.getElementById("btn1").value == x && document.getElementById("btn4").value == x &&
+  document.getElementById("btn7").value == x) {
+    return true
+  }
+  else if(document.getElementById("btn2").value == x && document.getElementById("btn5").value == x &&
+  document.getElementById("btn8").value == x) {
+    return true
+  }
+  else if(document.getElementById("btn3").value == x && document.getElementById("btn6").value == x &&
+  document.getElementById("btn9").value == x) {
+    return true  //column
+  }
+  else if(document.getElementById("btn1").value == x && document.getElementById("btn5").value == x &&
+  document.getElementById("btn9").value == x) {
+    return true 
+  }
+  else if(document.getElementById("btn3").value == x && document.getElementById("btn5").value == x &&
+  document.getElementById("btn7").value == x) {
+    return true //diagonal
+  }
+  else {
+    return false 
+  }
+ 
+}
+
+function checkdraw() {
+  if(document.getElementById("btn1").value == " ") { 
+    return false
+  }
+  else if(document.getElementById("btn2").value == " ") {
+    return false
+  }
+  else if(document.getElementById("btn3").value == " ") {
+    return false
+  }
+  else if(document.getElementById("btn4").value == " ") {
+    return false
+  }
+  else if(document.getElementById("btn5").value == " ") {
+    return false
+  }
+  else if(document.getElementById("btn6").value == " ") {
+    return false
+  }
+  else if(document.getElementById("btn7").value == " ") {
+    return false
+  }
+  else if(document.getElementById("btn8").value == " ") {
+    return false
+  }
+  else if(document.getElementById("btn9").value == " ") {
+    return false
+  }
+  else {
+    return true     //no empty buttons so draw confirmation
+  }
+}
+
+function restartGame()
+{
+	x="X"
+	gameover=false            //indocator when the game is done
+	document.getElementById("btn1").value = " "
+	document.getElementById("btn2").value = " "
+	document.getElementById("btn3").value = " "
+	document.getElementById("btn4").value = " "
+	document.getElementById("btn5").value = " "
+	document.getElementById("btn6").value = " "
+	document.getElementById("btn7").value = " "
+	document.getElementById("btn8").value = " "
+	document.getElementById("btn9").value = " "
+	document.getElementById("btn1").style.backgroundColor= "#89cff0"
+	document.getElementById("btn2").style.backgroundColor=  "#89cff0"
+	document.getElementById("btn3").style.backgroundColor=  "#89cff0"
+	document.getElementById("btn4").style.backgroundColor=  "#89cff0"
+	document.getElementById("btn5").style.backgroundColor=  "#89cff0"
+	document.getElementById("btn6").style.backgroundColor=  "#89cff0"
+	document.getElementById("btn7").style.backgroundColor=  "#89cff0"
+	document.getElementById("btn8").style.backgroundColor=  "#89cff0"
+	document.getElementById("btn9").style.backgroundColor=  "#89cff0"
+}
+</script>
+</head>
+<body>   
+
+<h1>
+  Welcome to the game of tictactoe
+</h1>
+<form>
+	<input type="button"  value=" " id="btn1" onclick="buttonclick('btn1')">&nbsp;&nbsp;
+	<input type="button"  value=" " id="btn2" onclick="buttonclick('btn2')">&nbsp;&nbsp;
+	<input type="button"  value=" " id="btn3" onclick="buttonclick('btn3')"><br><br>
+	<input type="button"  value=" " id="btn4" onclick="buttonclick('btn4')">&nbsp;&nbsp;
+	<input type="button"  value=" " id="btn5" onclick="buttonclick('btn5')">&nbsp;&nbsp;
+	<input type="button"  value=" " id="btn6" onclick="buttonclick('btn6')"><br><br>
+	<input type="button"  value=" " id="btn7" onclick="buttonclick('btn7')">&nbsp;&nbsp;
+	<input type="button"  value=" " id="btn8" onclick="buttonclick('btn8')">&nbsp;&nbsp;
+	<input type="button"  value=" " id="btn9" onclick="buttonclick('btn9')"><br><br>
+	<input type="button"  value="RESTART GAME"  id ="button" onclick="restartGame()">
+</form>
+
+
+</body>
+
+
+</html>
